@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+	<h1>Day1</h1>
+	<table border=1><tbody>
+	<% 
+	  for(var i=0,k=0;i< 7 ; i++) {
+	%>
+		<tr height="50">
+		<% if(i==0){ %>
+			<th width="80"><item>時間</th>
+			<% for(var j=1; j<4; j++){ %>
+				<th width="130" align="center"><item>隊伍</th>
+            	<th width="80" align="center"><item>比分</th>
+			<% }
+			continue%>
+		<% } %>
+		<th width="80"><item><%=match[k].time%></th>
+		<% for (var j = 1; j < 4; j++) { %>
+	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
+             <td width="80" align="center"><score><%= match[k++].court%></td>
+        <% } %>
+		</tr>
+	<% } %>
+	</tbody><table>
+	
+	<% if(match.length>17){%>
+	<br><h1>Day2</h1>
+	<table border=1><tbody>
+	<% 
+	  for(var i=0,k=18;i< 7 ; i++) {
+	%>
+		<tr height="50">
+		<% if(i==0){ %>
+			<th width="80"><item>時間</th>
+			<% for(var j=1; j<4; j++){ %>
+				<th width="130" align="center"><item>隊伍</th>
+            	<th width="80" align="center"><item>比分</th>
+			<% }
+			continue%>
+		<% } %>
+		<% if(i==3){ %>
+			<th width="80"><item><%=match[k].time%></th>
+			<% for (var j = 1; j < 3; j++) { %>
+	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
+             <td width="80" align="center"><score><%= match[k++].court%></td>
+			<% } %>
+			<td width="130" align="center"><team>---</td>
+            <td width="80" align="center"><score>---</td>
+			<% continue%>
+		<% } %>
+		<th width="80"><item><%=match[k].time%></th>
+		<% for (var j = 1; j < 4; j++) { %>
+	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
+             <td width="80" align="center"><score><%= match[k++].court%></td>
+        <% } %>
+		</tr>
+	<% } %>
+	</tbody><table>
+	<% } %>
+	
+	<% if(match.length>35){%>
+	<br><h1>Day3</h1>
+	<table border=1><tbody>
+	<% 
+	  for(var i=0,k=0;i< 7 ; i++) {
+	%>
+		<tr height="50">
+		<% if(i==0){ %>
+			<th width="80"><item>時間</th>
+			<% for(var j=1; j<4; j++){ %>
+				<th width="130" align="center"><item>隊伍</th>
+            	<th width="80" align="center"><item>比分</th>
+			<% }
+			continue%>
+		<% } %>
+		<th width="80"><item><%=match[k].time%></th>
+		<% for (var j = 1; j < 7; j+=2) { %>
+	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
+             <td width="80" align="center"><score><%= match[k++].court%></td>
+        <% } %>
+		</tr>
+	<% } %>
+	</tbody><table>
+	<% } %>
+	
+	<% if(match.length>48){%>
+	<br><h1>Day4</h1>
+	<table border=1><tbody>
+	<% 
+	  for(var i=0,k=0;i< 7 ; i++) {
+	%>
+		<tr height="50">
+		<% if(i==0){ %>
+			<th width="80"><item>時間</th>
+			<% for(var j=1; j<4; j++){ %>
+				<th width="130" align="center"><item>隊伍</th>
+            	<th width="80" align="center"><item>比分</th>
+			<% }
+			continue%>
+		<% } %>
+		<th width="80"><item><%=match[k].time%></th>
+		<% for (var j = 1; j < 7; j+=2) { %>
+	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
+             <td width="80" align="center"><score><%= match[k++].court%></td>
+        <% } %>
+		</tr>
+	<% } %>
+	</tbody><table>
+	<% } %>
+	
+	
+	
+<!--	
+    <h1><%= match[0].date %></h1>
+	
+	<% 
+	  for(var i=0;i< match.length ; i++) {
+	%>
+	  <p><%= match[i].team1 %></p>
+	<% } %>
+-->
+
+  </body>
+</html>
