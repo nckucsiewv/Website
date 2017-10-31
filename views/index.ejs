@@ -1,129 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-	<h1>Day1</h1>
-	<table border=1><tbody>
-	<% 
-	  for(var i=0,k=0;i< 7 ; i++) {
-	%>
-		<tr height="50">
-		<% if(i==0){ %>
-			<th width="80"><item>時間</th>
-			<% for(var j=1; j<4; j++){ %>
-				<th width="130" align="center"><item>隊伍</th>
-            	<th width="80" align="center"><item>比分</th>
-			<% }
-			continue%>
-		<% } %>
-		<th width="80"><item><%=match[k].time%></th>
-		<% for (var j = 1; j < 4; j++) { %>
-	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
-             <td width="80" align="center"><score><%= match[k++].court%></td>
-        <% } %>
-		</tr>
-	<% } %>
-	</tbody><table>
-	
-	<% if(match.length>17){%>
-	<br><h1>Day2</h1>
-	<table border=1><tbody>
-	<% 
-	  for(var i=0,k=18;i< 7 ; i++) {
-	%>
-		<tr height="50">
-		<% if(i==0){ %>
-			<th width="80"><item>時間</th>
-			<% for(var j=1; j<4; j++){ %>
-				<th width="130" align="center"><item>隊伍</th>
-            	<th width="80" align="center"><item>比分</th>
-			<% }
-			continue%>
-		<% } %>
-		<% if(i==3){ %>
-			<th width="80"><item><%=match[k].time%></th>
-			<% for (var j = 1; j < 3; j++) { %>
-	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
-             <td width="80" align="center"><score><%= match[k++].court%></td>
-			<% } %>
-			<td width="130" align="center"><team>---</td>
-            <td width="80" align="center"><score>---</td>
-			<% continue%>
-		<% } %>
-		<th width="80"><item><%=match[k].time%></th>
-		<% for (var j = 1; j < 4; j++) { %>
-	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
-             <td width="80" align="center"><score><%= match[k++].court%></td>
-        <% } %>
-		</tr>
-	<% } %>
-	</tbody><table>
-	<% } %>
-	
-	<% if(match.length>35){%>
-	<br><h1>Day3</h1>
-	<table border=1><tbody>
-	<% 
-	  for(var i=0,k=0;i< 7 ; i++) {
-	%>
-		<tr height="50">
-		<% if(i==0){ %>
-			<th width="80"><item>時間</th>
-			<% for(var j=1; j<4; j++){ %>
-				<th width="130" align="center"><item>隊伍</th>
-            	<th width="80" align="center"><item>比分</th>
-			<% }
-			continue%>
-		<% } %>
-		<th width="80"><item><%=match[k].time%></th>
-		<% for (var j = 1; j < 7; j+=2) { %>
-	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
-             <td width="80" align="center"><score><%= match[k++].court%></td>
-        <% } %>
-		</tr>
-	<% } %>
-	</tbody><table>
-	<% } %>
-	
-	<% if(match.length>48){%>
-	<br><h1>Day4</h1>
-	<table border=1><tbody>
-	<% 
-	  for(var i=0,k=0;i< 7 ; i++) {
-	%>
-		<tr height="50">
-		<% if(i==0){ %>
-			<th width="80"><item>時間</th>
-			<% for(var j=1; j<4; j++){ %>
-				<th width="130" align="center"><item>隊伍</th>
-            	<th width="80" align="center"><item>比分</th>
-			<% }
-			continue%>
-		<% } %>
-		<th width="80"><item><%=match[k].time%></th>
-		<% for (var j = 1; j < 7; j+=2) { %>
-	         <td width="130" align="center"><team><%= match[k].team1%> v.s. <%=match[k].team2%></td>
-             <td width="80" align="center"><score><%= match[k++].court%></td>
-        <% } %>
-		</tr>
-	<% } %>
-	</tbody><table>
-	<% } %>
-	
-	
-	
-<!--	
-    <h1><%= match[0].date %></h1>
-	
-	<% 
-	  for(var i=0;i< match.length ; i++) {
-	%>
-	  <p><%= match[i].team1 %></p>
-	<% } %>
--->
 
-  </body>
+<head>
+	<title></title>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<script type="text/javascript" src="//code.jquery.com/jquery-3.2.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.9.0/sweetalert2.min.css">
+</head>
+
+<body>
+	<% for (var d=0; d<2; d++) { 
+		var Matchs = dayMatch[d];
+	%>
+	<h1>Day<%= d+1 %></h1>
+	<table border=1>
+		<tbody>
+			<tr height="50">
+				<th width="80"><item>時間</th>
+				<th width="130" align="center"><item>隊伍</th>
+				<th width="80" align="center"><item>比分</th>
+				<th width="130" align="center"><item>隊伍</th>
+				<th width="80" align="center"><item>比分</th>
+				<th width="130" align="center"><item>隊伍</th>
+				<th width="80" align="center"><item>比分</th>
+				<th width="80" align="center"><item>推播</th>
+			</tr>
+
+			<% for(var i=0;i<6;i++) { %>
+				<tr height="50">
+						<th width="80"><item><%= timeStamp[i] %></th>
+						<% for(var j=1;j<4;j++) { 
+								var match = Matchs[timeStamp[i]][j.toString()];
+								
+								if (match) {
+						%>
+							<td width="130" align="center"><team><%= teamDict[match.team1] %> v.s. <%= teamDict[match.team2] %></td>
+							<% if (match.score) { %>
+									<td class="score" width="80" align="center" id="<%= match._id %>"><score><%= match.score %></td>
+							<% } else { %>
+								<td class="score" width="80" align="center" id="<%= match._id %>"><score>---</td>
+							<% } %>
+						<% } else { %>
+							<td width="130" align="center"><team>---</td>
+							<td width="80" align="center"><score>---</td>
+						<% }} %>
+						<td><form action="http://localhost:5000" method="post">
+							<input type="hidden" name="time" value="<%= timeStamp[i] %>">
+							<input type="hidden" name="date" value="<%= d+1 %>">
+							<input type="submit" value="推播通知"></td>
+				</tr>
+			<% } %>
+		</tbody>
+		<table>
+		<br>
+		<% } %>
+
+
+		<script>
+		/*
+			function getUserID(date, time) {
+				$.ajax({
+          url: '/get-userId',
+          type: 'POST',
+          data: {
+						date: date, 
+						time: time
+					},
+					success: () => {
+						console.log('success');
+					},
+					error: (err) => {
+						console.log(err);
+					}
+				})
+			}
+		*/
+			$('td.score').on('click',function() {
+				matchId = this.id;
+				swal({
+					title: '請輸入比分',
+					input: 'text',
+					showCancelButton: true,
+					confirmButtonText: 'Submit',
+					showLoaderOnConfirm: true,
+					allowOutsideClick: false
+				}).then(function (score) {
+					swal({
+						type: 'success',
+						title: '修改成功',
+					})
+					$('#' + matchId).html('<score>'+score);
+					$.post("/modify-score/"+matchId, { score: score } );
+
+				}).catch(function (err){
+					console.log(err);
+				})
+			})
+		</script>
+</body>
+
 </html>

@@ -12,4 +12,6 @@ module.exports = mongoose.model('match', new Schema({
     time: String,
     date: String,
     court: String,
+    score: String,
+    winner: String
 }),'match');
