@@ -37,7 +37,7 @@ router.get('/', function(req, res, next) {
       '15:00~16:00': {},
       '16:00~17:00': {},
     };
-
+    
     match.forEach((m) => {
       if (m.date === '1') {
         dayOneMatch[m.time][m.court] = m;
