@@ -38,18 +38,41 @@ router.get('/', function(req, res, next) {
       '16:00~17:00': {},
     };
     
+    var dayThreeMatch = {
+      '8:00~9:00': {},
+      '9:00~10:00': {},
+      '10:00~11:00': {},
+      '14:00~15:00': {},
+      '15:00~16:00': {},
+      '16:00~17:00': {},
+    };
+
+    var dayFourMatch = {
+      '8:00~9:00': {},
+      '9:00~10:00': {},
+      '10:00~11:00': {},
+      '14:00~15:00': {},
+      '15:00~16:00': {},
+      '16:00~17:00': {},
+    };
+    
+
     match.forEach((m) => {
       if (m.date === '1') {
         dayOneMatch[m.time][m.court] = m;
-      } else {
+      } else if (m.date === '2') {
         dayTwoMatch[m.time][m.court] = m;
+      } else if (m.date === '3') {
+        dayThreeMatch[m.time][m.court] = m;
+      } else {
+        dayFourMatch[m.time][m.court] = m;
       }
     })
 
     var timeStamp = ['8:00~9:00', '9:00~10:00', '10:00~11:00', '14:00~15:00', '15:00~16:00', '16:00~17:00'];
 
 	  res.render('index', {
-      dayMatch: [dayOneMatch, dayTwoMatch],
+      dayMatch: [dayOneMatch, dayTwoMatch, dayThreeMatch, dayFourMatch],
       teamDict,
       timeStamp,
 	  });
